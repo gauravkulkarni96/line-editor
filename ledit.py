@@ -27,7 +27,7 @@ if __name__ == "__main__":
 	# IF FILENAME NOT GIVEN CREATE "temp.txt"
 	if len(sys.argv) < 2:
 		print "No fileName given\nCreating a temporary file temp.txt"
-		sys.argv[1] = file = "temp.txt"
+		file = "temp.txt"
 	else:
 		file = sys.argv[1]
 

@@ -14,7 +14,7 @@ from checks import checkIntegers, argLenCheck, indexCheck
 def display(inputLine, text):
 	textShow = text
 	start = 1
-
+	file = "temp.txt"
 	# VALIDATING INPUT
 	if len(inputLine)>1:
 		if not argLenCheck(inputLine, 0, 2):
@@ -28,7 +28,12 @@ def display(inputLine, text):
 			return True
 
 		textShow = text[start-1:end]
-	print "\n----- "+sys.argv[1]+" -----"
+
+	# IF FILENAME GIVEN	
+	if len(sys.argv) > 1:
+		file = sys.argv[1]
+
+	print "\n----- "+file+" -----"
 	for n, line in enumerate(textShow):
 		print n+start, line,
 	print ""
@@ -50,9 +55,14 @@ def showHelp(functions):
 
 # QUIT EDITOR
 def quit(inputLine, text):
+	file = "temp.txt"
+
+	# IF FILENAME GIVEN	
+	if len(sys.argv) > 1:
+		file = sys.argv[1]
 
 	# SAVE FILE AND QUIT
-	with open (sys.argv[1], 'w') as f:
+	with open (file, 'w') as f:
 		f.write("".join(text))
 	print "\n-- Exit LEdit! --"
 	return False
